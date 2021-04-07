@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Build stage triggered'
+				mvn install
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Test stage triggered'
+				mvn test
+            }
+        }
+		stage('Deploy') {
+            steps {
+                echo 'Deploy stage triggered'
+				mvn spring-boot:run
+            }
+        }
+    }   
+}
