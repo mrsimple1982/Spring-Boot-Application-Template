@@ -5,19 +5,19 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Build stage triggered'
-				mvn install
+				bat(mvn install)
             }
         }
         stage('Test') {
             steps {
                 echo 'Test stage triggered'
-				mvn test
+				bat(mvn test)
             }
         }
 		stage('Deploy') {
             steps {
                 echo 'Deploy stage triggered'
-				mvn spring-boot:run
+				bat(mvn spring-boot:run)
             }
         }
     }   
