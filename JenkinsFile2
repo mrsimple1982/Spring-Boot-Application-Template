@@ -5,19 +5,24 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Build stage triggered'
-				bat(mvn install)
+				cd Spring-Boot-Application-Template
+				mvn install
+				echo 'Build stage Complete'
             }
         }
         stage('Test') {
             steps {
                 echo 'Test stage triggered'
-				bat(mvn test)
+				cd Spring-Boot-Application-Template
+				mvn clean test
             }
         }
 		stage('Deploy') {
             steps {
                 echo 'Deploy stage triggered'
-				bat(mvn spring-boot:run)
+				cd Spring-Boot-Application-Template
+				mvn spring-boot:run
+				echo 'Build stage Complete'
             }
         }
     }   
